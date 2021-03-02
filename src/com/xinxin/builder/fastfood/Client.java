@@ -9,5 +9,9 @@ public class Client {
         System.out.println(vegMeal.getCost());
 
 
+        Meal nonVegMeal = mealBuilder.prepareNonVegMeal();
+        System.out.println("Non Veg Meal");
+        nonVegMeal.showItems();
+        System.out.println(nonVegMeal.getCost());
     }
 }

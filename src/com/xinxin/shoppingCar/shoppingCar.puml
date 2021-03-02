@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class Market
+
+class ShoppingCar
+class Item
+
+class Checkout
+
+class Item {
+name();
+price();
+unit();
+}
+
+class ShoppingCar {
+    id: String
+    items: List<Item>
+    checkout: Checkout
+}
+
+class Market {
+    address: String
+    city: String
+    state: String
+    phones: String[]
+    time: long
+    cashier: String
+}
+ShoppingCar o-- Item
+ShoppingCar o-- Checkout
+Market ..> ShoppingCar
+
+
+
+
+@enduml

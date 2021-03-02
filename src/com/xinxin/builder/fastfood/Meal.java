@@ -18,10 +18,12 @@ public class Meal {
     }
 
     public void showItems() {
+        System.out.println("=============show items==================");
         for (Item item: items) {
+            System.out.println("======================");
             System.out.println("Item:" + item.name());
-            System.out.println(", Packing:" + item.packing().pack());
-            System.out.println(", Price:" + item.price());
+            System.out.println("Packing:" + item.packing().pack());
+            System.out.println("Price:" + item.price());
         }
     }
 }
