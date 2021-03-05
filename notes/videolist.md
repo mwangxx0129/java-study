@@ -1,6 +1,8 @@
 # Summary of design pattern
 ...
 Prototype Pattern: https://www.youtube.com/watch?v=_Ab8IxtFrGc&list=PLmOn9nNkQxJH-C-qEI2rpewHTI9ITpMkt&index=54
+Decorator Pattern: https://www.youtube.com/watch?v=3CMT4tbDVjE&list=PLmOn9nNkQxJH-C-qEI2rpewHTI9ITpMkt&index=77
+
 
 ## Builder Pattern
 

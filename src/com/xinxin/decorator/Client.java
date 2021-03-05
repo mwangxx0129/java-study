@@ -3,11 +3,8 @@ package com.xinxin.decorator;
 public class Client {
     public static void main(String[] args) {
         // 2 chocolate + milk + Long Black
-        Item order = new LongBlack();
-//        System.out.println(order.cost());
-        System.out.println(order.getDes() + "\t" + order.cost());
 
-        order = new Milk(order);
+        Item order = new Milk(new LongBlack());
         System.out.println(order.cost());
         System.out.println(order.getDes());
 

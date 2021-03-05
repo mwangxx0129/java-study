@@ -1,32 +1,22 @@
 package com.xinxin.utils;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 
 public class Client {
 
     public static void main(String[] args) throws IOException {
-        saveFile("/mnt/edisdocs/ibfengine-incoming", "c.txt", "hello".getBytes(StandardCharsets.UTF_8));
+        // 1. InputStream is abstract class  = com.xinxin.decorator.Item
+        // 2. FileInputStream is a subclass of InputStream, = LongBlack Expresso
+        // 3. FilterInputStream is a subclass of InputStream  = Decorator
+        // 4. Data Input Stream is a subclass of Decorator = Milk
+        // 5. FilterInputStream has `protected volatile InputStream in` = decorater
+        // 6. Analyze the Decorator pattern in JDK io system
+        DataInputStream dis = new DataInputStream(new FileInputStream("c:\\windows-version.txt"));
+        System.out.println(dis.read());
+        dis.close();
     }
 
-    public static File saveFile(String workingDir, String fullName, byte[] data) throws IOException {
-        File inFile = new File(workingDir + "/" + fullName);
-        if (inFile.exists()) {
-            return inFile;
-        }
 
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(inFile);
-            fos.write(data);
-        } catch (IOException ioe) {
-            throw ioe;
-        } finally {
-            fos.close();
-        }
-        return inFile;
-
-    }
 }
