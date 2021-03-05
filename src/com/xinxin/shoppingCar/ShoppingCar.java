@@ -1,64 +1,38 @@
 package com.xinxin.shoppingCar;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ShoppingCar {
-    private List<Item> items = new ArrayList<>();
-    private List<ItemWithAmount> itemWithAmounts = new ArrayList<>();
+    private final List<ItemWithAmount> itemWithAmounts = new ArrayList<>();
     private Checkout checkout;
 
-    public void addItem(Item item) {
-        items.add(item);
-    }
-
-    public void showItems() {
-        for (Item item : items) {
-            System.out.println(item.toString());
-        }
-    }
-
-    private Map<Item, Integer> getItemAmounts() {
-        Map<Item, Integer> result = new HashMap<>();
-        for (Item item: items) {
-            result.put(item, result.getOrDefault(item, 0) + 1);
-        }
-        return result;
-    }
-
     public void postProcess() {
-        Map<Item, Integer> result = getItemAmounts();
-        for (Map.Entry<Item, Integer> e : result.entrySet()) {
-            itemWithAmounts.add(new ItemWithAmount(e.getKey(), 1.0 * e.getValue()));
-        }
         checkout = new Checkout(itemWithAmounts);
         printMap();
     }
 
+    public void addItemWithAmount(ItemWithAmount itemWithAmount) {
+        itemWithAmounts.add(itemWithAmount);
+    }
+
     private void printMap() {
-        for (ItemWithAmount itemWithAmount : itemWithAmounts) {
-            System.out.println(itemWithAmount.toString());
-            System.out.println();
-        }
-        for (ItemWithAmount itemWithAmount : itemWithAmounts) {
-            System.out.println(itemWithAmount.toString());;
-        }
-        for (Map.Entry e : this.getItemAmounts().entrySet()) {
-            System.out.println(e.getKey() + '\t');
-            e.getKey(), e.getValue()
-        }
+        itemWithAmounts.stream().map(ItemWithAmount::toString).forEach(System.out::println);
         System.out.println("TOTAL\t" + checkout.getCost());
+        System.out.println("TAX\t" + checkout.getTax());
+        System.out.println("\nItem Count " + this.getItemCount());
 
     }
 
-    private void print() {
-        for (Item item : items) {
-            System.out.println(item.toString());
-            System.out.println();
+    private int getItemCount() {
+        int sum  = 0;
+        for (ItemWithAmount itemWithAmount : itemWithAmounts) {
+            if (itemWithAmount.getItem().getUnit().equalsIgnoreCase("EA")) {
+                sum += 1 * itemWithAmount.getAmount();
+            } else {
+                sum += 1;
+            }
         }
-        System.out.println("TOTAL\t" + checkout.getCost());
-
+        return sum;
     }
 }

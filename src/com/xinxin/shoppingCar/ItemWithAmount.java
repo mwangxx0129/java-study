@@ -3,16 +3,16 @@ package com.xinxin.shoppingCar;
 public class ItemWithAmount {
     private Item item;
     private Double amount;
-    private Double prices;
+    private Double cost;
 
     ItemWithAmount(Item item, Double amount) {
         this.item = item;
         this.amount = amount;
-        this.prices = item.getPrice() * amount;
+        this.cost = item.getPrice() * amount;
     }
 
-    public Double getPrices() {
-        return this.prices;
+    public Double getCost() {
+        return this.cost;
     }
 
     public Item getItem() {
@@ -33,10 +33,9 @@ public class ItemWithAmount {
 
     @Override
     public String toString() {
-
-        return "%s/%s\t\t%d\n" +
-                "\t%d" +
-        return getItem().getName() + "/" + ((double) amount == 1.0 ? "" :"") + getPrices();
+        return String.format("%-25s %.2f", (this.item.getName() + "/" + this.item.getUnit()), cost) +
+                (Double.compare(amount, 1) == 0 ? ""
+                        : "\n\t" + amount + " " + this.item.getUnit().toUpperCase() + " @ $" + this.item.getPrice() + "/" + this.item.getUnit().toUpperCase());
 
     }
 }

@@ -1,18 +1,28 @@
 package com.xinxin.shoppingCar;
 
-import java.util.HashMap;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
-import java.util.Map;
 
 public class Checkout {
+    private Long id;
+    private Double total;
     private List<ItemWithAmount> itemWithAmounts;
+
     Checkout(List<ItemWithAmount> itemWithAmounts) {
         this.itemWithAmounts = itemWithAmounts;
     }
 
     public Double getCost() {
-        return this.itemWithAmounts.stream()
-                .map(ItemWithAmount::getPrices)
-                .reduce(0.0d, Double::sum);
+        double total = 0.d;
+        for (ItemWithAmount itemWithAmount : itemWithAmounts) {
+            double cost = new BigDecimal(itemWithAmount.getCost()).setScale(2, RoundingMode.HALF_EVEN).doubleValue();
+            total += cost;
+        }
+        return this.total = total;
+    }
+
+    public Double getTax() {
+        return total * 0.078;
     }
 }

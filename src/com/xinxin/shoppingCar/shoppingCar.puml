@@ -26,11 +26,13 @@ class Market {
     state: String
     phones: String[]
     time: long
-    cashier: String
+    cashier: Cashier
 }
+
 ShoppingCar o-- Item
 ShoppingCar o-- Checkout
-Market ..> ShoppingCar
+Cashier ..> ShoppingCar
+Market ..> Cashier
 
 
 

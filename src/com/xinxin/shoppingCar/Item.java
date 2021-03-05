@@ -1,5 +1,7 @@
 package com.xinxin.shoppingCar;
 
+import java.util.Objects;
+
 public class Item implements Cloneable{
 
     private Long id;
@@ -7,10 +9,19 @@ public class Item implements Cloneable{
     private String unit;
     private Double price;
 
-    public Item(String name, String unit, Double price) {
+    public Item(Long id, String name, String unit, Double price) {
+        this.id = id;
         this.name = name;
         this.unit = unit;
         this.price = price;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -47,5 +58,22 @@ public class Item implements Cloneable{
     @Override
     protected Item clone() throws CloneNotSupportedException {
         return (Item) super.clone();
+    }
+
+    @Override
+    public int hashCode() {
+        return Long.hashCode(id);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || obj.getClass() != getClass())
+            return false;
+        Item that = (Item) obj;
+        if (that.getId() == this.getId())
+            return true;
+        return false;
     }
 }
