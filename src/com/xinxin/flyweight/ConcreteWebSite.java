@@ -8,7 +8,7 @@ public class ConcreteWebSite extends WebSite{
     }
 
     @Override
-    public void use() {
-        System.out.println("The type of website release: " + type);
+    public void use(User user) {
+        System.out.println(user.getName() + " Release type of website release: " + type);
     }
 }
