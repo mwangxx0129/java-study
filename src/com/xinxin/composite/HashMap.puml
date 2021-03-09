@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Map
+abstract class AbstractHashMap {
+put(): void
+putAll(): void
+}
+
+class HashMap
+class Node
+
+
+Map <|-- AbstractHashMap
+
+
+
+
+@enduml
