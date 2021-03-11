@@ -1,0 +1,9 @@
+version: '3'
+services:
+  vm:
+    image: mwangxx/instantclient:12.2.0.1
+    hostname: vm
+    container_name: vm
+    volumes:
+      - /Users/xinxin/DesignPattern/Dockerfiles/21.1.0.0/:/21.1.0.0
+    tty: true
