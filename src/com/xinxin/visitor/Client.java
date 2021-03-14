@@ -12,5 +12,8 @@ public class Client {
 
         Fail fail = new Fail();
         objectStructure.display(fail);
+
+        Wait wait = new Wait();
+        objectStructure.display(wait);
     }
 }
