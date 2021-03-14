@@ -2,4 +2,4 @@
 *.iml
 out/
 src/com/xinxin/tmp
-Dockerfiles/21.1.0.0/*rpm
+Dockerfiles/21.1.0.1/*rpm
