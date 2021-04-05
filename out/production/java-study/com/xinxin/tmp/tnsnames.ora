@@ -1,0 +1,39 @@
+############################################
+# AIM DEV DB
+############################################
+
+AIMDEV =
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = db-aimdev.curaspan.local)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SERVICE_NAME = AIMDEV)
+    )
+  )
+############################################
+# AIM QA DB
+############################################
+AIMQA =
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = db-aimqa.curaspan.local)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SERVICE_NAME = AIMQA)
+    )
+  )
+
+############################################
+# AIM STAGING DB
+# WARNING: ***CONTAINS PHI***
+############################################
+AIMSTG =
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = db-aimstg.curaspan.local)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SERVICE_NAME = AIMSTG)
+    )
+  )

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="cglib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/designpattern/out/production/DesignPattern/com/xinxin/proxy/cglib/asm-commons-3.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/designpattern/out/production/DesignPattern/com/xinxin/proxy/cglib/asm-tree-3.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/designpattern/out/production/DesignPattern/com/xinxin/proxy/cglib/asm-all-3.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/designpattern/out/production/DesignPattern/com/xinxin/proxy/cglib/cglib-2.2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

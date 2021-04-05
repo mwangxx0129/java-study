@@ -1,0 +1,9 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class ProxyObject
+ProxyObject --> TargetObject
+Client --> ProxyObject
+
+
+@enduml
