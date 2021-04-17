@@ -1,4 +1,4 @@
-package com.xinxin.interview.amazon;
+package com.xinxin.interview.amazon.shoppingoptions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,30 +37,30 @@ public class ShoppingOptions {
         List<List<Integer>> res = new ArrayList<>();
         for (int i = 0; i < list1.length; ++ i) {
             int sum = list1[i];
-            if (sum > budget) {
+            if (list1[i] > budget) {
                 return res;
             }
 
             for (int j = 0; j < list2.length; ++ j) {
 
-                sum += list2[j];
+                sum = list1[i] + list2[j];
                 if (sum > budget) {
-                    return res;
+                    break;
                 }
 
                 for (int k = 0; k < list3.length; ++ k) {
 
-                    sum += list3[k];
+                    sum = list1[i] + list2[j] + list3[k];
                     if (sum > budget) {
-                        return res;
+                        break;
                     }
 
                     for (int m = 0; m < list4.length; ++ m) {
-                        sum += list4[m];
+                        sum = list1[i] + list2[j] + list3[k] + list4[m];
                         if (sum <= budget) {
                             res.add(Arrays.asList(list1[i], list2[j], list3[k], list4[m]));
                         } else {
-                            return res;
+                            break;
                         }
                     }
                 }
