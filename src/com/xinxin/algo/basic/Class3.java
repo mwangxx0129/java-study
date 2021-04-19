@@ -1,6 +1,7 @@
 package com.xinxin.algo.basic;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
 public class Class3 {
@@ -17,11 +18,48 @@ public class Class3 {
 //        stackWith3Stack(stack);
         sortStackWith2Stack(stack);
         System.out.println(stack);
+
+
+        ListNode n1 = new ListNode(2);
+        ListNode n2 = new ListNode(4);
+        ListNode n3 = new ListNode(3);
+        ListNode n4 = new ListNode(5);
+        ListNode n5 = new ListNode(1);
+
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+        n4.next = n5;
+
+        partition(n1, 3);
+
     }
 
-//    class Deque {
-//        Stack<>
-//    }
+    static class ListNode {
+        int value;
+        ListNode next;
+        ListNode(int val) {
+            this.value = val;
+        }
+    }
+    static ListNode partition (ListNode head, int target) {
+        ListNode dummy1 = new ListNode(-1);
+        ListNode dummy2 = new ListNode(-1);
+        ListNode h1 = dummy1, h2 = dummy2;
+        while (head != null) {
+            if (head.value < target) {
+                h1.next = head;
+                h1 = h1.next;
+            } else {
+                h2.next = head;
+                h2 = h2.next;
+            }
+            head = head.next;
+        }
+        h2.next = null;
+        h1.next = dummy2.next;
+        return dummy1.next;
+    }
 
     private static void sortStackWith2Stack(Stack<Integer> stack1) {
         Stack<Integer> stack2 = new Stack<>();
