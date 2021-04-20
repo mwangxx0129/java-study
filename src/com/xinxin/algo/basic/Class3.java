@@ -32,7 +32,142 @@ public class Class3 {
         n4.next = n5;
 
         partition(n1, 3);
+        print(n1);
 
+        print(reverse(n1));
+
+        System.out.println("!!!!!!!!!!");
+        ListNode newNode = new ListNode(1);
+        newNode.addNext(2).addNext(3).addNext(4).addNext(5);
+
+        ListNode reversed = reverseInGroup(newNode, 2);
+        print(reversed);
+
+        ListNode inserted = insert(newNode, 6);
+        print(inserted);
+
+    }
+
+    // odd mid or even the first of mid
+    static ListNode middleNode(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+
+        ListNode slow = head, fast = head.next;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
+    static boolean hasCircle(ListNode head) {
+
+        ListNode slow = head, fast = head;
+        while (slow != fast) {
+            if(fast != null && fast.next != null) {
+                return false;
+            }
+            slow = head.next;
+            fast = fast.next.next;
+        }
+        return true;
+    }
+
+    static ListNode insert(ListNode head, int target) {
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode pre = dummy;
+
+        while (head != null && head.value < target) {
+            head = head.next;
+            pre = pre.next;
+        }
+        ListNode newNode = new ListNode(target);
+        pre.next = newNode;
+        newNode.next = head;
+
+        return dummy.next;
+    }
+
+    static ListNode reverseInPairs(ListNode head) {
+        return reverseInGroup(head, 2);
+    }
+
+    static ListNode reverseInGroup(ListNode head, int k) {
+
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode preGroupTail = dummy;
+
+        while (head != null) {
+            ListNode groupHead = head;
+            ListNode groupTail = head;
+            for (int i = 0; i < k && head != null; ++ i) {
+                groupTail = head;
+                head = head.next;
+            }
+            groupTail.next = null;
+            ListNode newHead = reverse(groupHead);
+
+            preGroupTail.next = newHead;
+            preGroupTail = groupHead;
+        }
+        return dummy.next;
+    }
+
+    static ListNode merge(ListNode h1, ListNode h2) {
+        ListNode dummy = new ListNode(-1);
+        ListNode pre = dummy;
+        while (h1 != null && h2 != null) {
+            if (h1.value < h2.value) {
+                pre.next = h1;
+                h1 = h1.next;
+            } else {
+                pre.next = h2;
+                h2 = h2.next;
+            }
+            pre = pre.next;
+        }
+
+        while (h1 != null) {
+            pre.next = h1;
+            h1 = h1.next;
+            pre = pre.next;
+        }
+
+        while (h2 != null) {
+            pre.next = h2;
+            h2 = h2.next;
+            pre = pre.next;
+        }
+        return dummy.next;
+    }
+
+
+    static void print(ListNode head) {
+        System.out.println("=========");
+        ListNode cur = head;
+        while (cur != null) {
+            System.out.println(cur.value);
+            cur = cur.next;
+        }
+
+    }
+    static ListNode reverse(ListNode head) {
+
+        ListNode pre = null, cur = head;
+        if (head == null) return null;
+
+        while (cur != null) {
+            ListNode tmp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = tmp;
+        }
+
+        return pre;
     }
 
     static class ListNode {
@@ -40,6 +175,10 @@ public class Class3 {
         ListNode next;
         ListNode(int val) {
             this.value = val;
+        }
+
+        ListNode addNext(int val) {
+            return this.next = new ListNode(val);
         }
     }
     static ListNode partition (ListNode head, int target) {
