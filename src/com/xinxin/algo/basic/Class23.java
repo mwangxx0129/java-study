@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -13,8 +15,47 @@ import java.util.stream.Stream;
 public class Class23 {
     public static void main(String[] args) {
         Class23 class23 = new Class23();
-        List<String> res = class23.validParenthesesIII(1,3,1);
-        System.out.println(res);
+        class23.allPairs(new int[] {1,3,2,4}, 5);
+    }
+
+    public List<List<Integer>> allPairsII(int[] array, int target) {
+        List<List<Integer>> res = new ArrayList<>();
+        Set<String> isVisited = new HashSet<>();
+        Set<Integer> set = new HashSet<>();
+
+        for (int i = 0; i < array.length; ++ i) {
+            int t = target - array[i];
+            if (set.contains(t) && isVisited.add((Math.min(t, array[i])+ "#" + Math.max(t, array[i])))) {
+                    List<Integer> sub = new ArrayList<>();
+                    sub.add(t);
+                    sub.add(array[i]);
+                    res.add(sub);
+            }
+            set.add(array[i]);
+        }
+
+        return res;
+    }
+
+    public List<List<Integer>> allPairs(int[] array, int target) {
+        List<List<Integer>> res = new ArrayList<>();
+        Map<Integer, List<Integer>> map = new HashMap<>();
+
+        for (int i = 0; i < array.length; ++ i) {
+            List<Integer> targetVal = map.getOrDefault(target - array[i], new ArrayList<>());
+            for (int index : targetVal) {
+                List<Integer> sub = new ArrayList<>();
+                sub.add(index);
+                sub.add(i);
+                res.add(sub);
+            }
+
+            List<Integer> val = map.getOrDefault(array[i], new ArrayList<>());
+            val.add(i);
+            map.put(array[i], val);
+        }
+
+        return res;
     }
 
     public List<String> validParenthesesIII(int l, int m, int n) {
