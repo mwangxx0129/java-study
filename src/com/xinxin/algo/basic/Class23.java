@@ -1,12 +1,17 @@
 package com.xinxin.algo.basic;
 
+import java.util.AbstractQueue;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 import java.util.stream.Collectors;
@@ -14,8 +19,31 @@ import java.util.stream.Stream;
 
 public class Class23 {
     public static void main(String[] args) {
-        Class23 class23 = new Class23();
-        class23.allPairs(new int[] {1,3,2,4}, 5);
+        // [1,2,3]  [1,2,3]
+        // list of list [[1,2,3],[1,2,3]]
+        // set of list [[1,2,3]]
+        List<List<Integer>> input = new ArrayList<>();
+        List<Integer> sub1 =  new ArrayList<>();
+        sub1.add(1);
+        sub1.add(2);
+        sub1.add(3);
+
+
+        List<Integer> sub2 = new ArrayList<>();
+        sub2.add(1);
+        sub2.add(2);
+        sub2.add(3);
+
+        input.add(sub1);
+        input.add(sub2);
+
+        System.out.println(sub1.equals(sub2));
+
+        Set<List<Integer>> set = new HashSet<>(input);
+        System.out.println(set);
+
+        Deque q = new ArrayDeque();
+        Queue qq = new PriorityQueue();
     }
 
     public List<List<Integer>> allPairsII(int[] array, int target) {
