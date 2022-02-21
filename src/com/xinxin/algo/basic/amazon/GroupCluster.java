@@ -29,8 +29,8 @@ public class GroupCluster {
                 maxGroupSize = Math.max(maxGroupSize, end - start + 1);
                 ++ end;
             } else {
-                ++ start;
                 maxHeap.remove(bootingPower[start]);
+                ++ start;
             }
         }
         return maxGroupSize;
